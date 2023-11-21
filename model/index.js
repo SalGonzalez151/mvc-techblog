@@ -23,7 +23,7 @@ Dashboard.hasMany(Comments, {
 })
 
 Comments.belongsTo(Dashboard, {
-    foreingKey: 'dashboard_id'
+    foreignKey: 'dashboard_id'
 })
 
 

@@ -15,11 +15,19 @@ Dashboard.init ( {
         type: Datatypes.DATE,
         allowNull: false,
         defaultValue: now
+    },
+    user_id: {
+        references: {
+            model: 'user',
+            key: 'id'
+        }
     }
 }, {
     sequelize,
-    timestamps: true,
+    timestamps: false,
     freezeTableName: true,
     underscored: true,
     modelName: 'dashboard',
 })
+
+model.exports = Dashboard

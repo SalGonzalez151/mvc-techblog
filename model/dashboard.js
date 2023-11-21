@@ -1,22 +1,18 @@
-const { Model, Datatypes } = require('sequelize');
+const { Model, DataTypes } = require('sequelize');
 const sequelize = require('../config/connection');
 
 class Dashboard extends Model {}
 
 Dashboard.init ( {
     title: {
-        type: Datatypes.STRING,
+        type: DataTypes.STRING,
     },
     description: {
-        type: Datatypes.TEXT,
+        type: DataTypes.TEXT,
         allowNull: false
     },
-    upload_date: {
-        type: Datatypes.DATE,
-        allowNull: false,
-        defaultValue: now
-    },
     user_id: {
+        type: DataTypes.INTEGER,
         references: {
             model: 'user',
             key: 'id'
@@ -30,4 +26,4 @@ Dashboard.init ( {
     modelName: 'dashboard',
 })
 
-model.exports = Dashboard
+module.exports = Dashboard

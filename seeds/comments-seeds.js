@@ -14,4 +14,4 @@ const commentsData = [ {
 
 const seedComments = () => Comments.bulkCreate(commentsData)
 
-model.exports = seedComments
+module.exports = seedComments

@@ -1,15 +1,15 @@
-const { Model, Datatypes } = require('sequelize');
+const { Model, DataTypes } = require('sequelize');
 const sequelize = require('../config/connection');
 
 class User extends Model { }
 
 User.init({
     user: {
-        type: Datatypes.STRING,
+        type: DataTypes.STRING,
         allowNull: false
     },
     email: {
-        data: Datatypes.STRING,
+        type: DataTypes.STRING,
         allowNull: false,
         unique: true,
         validate: {
@@ -17,7 +17,7 @@ User.init({
         }
     },
     password: {
-        type: Datatypes.STRING,
+        type: DataTypes.STRING,
         allowNull: false,
         validate: {
             len: [8]
@@ -43,4 +43,4 @@ User.init({
         modelName: 'user',
     })
 
-model.exports = User;
+module.exports = User;

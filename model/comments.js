@@ -1,27 +1,22 @@
-const { Model, Datatypes } = require('sequelize');
+const { Model, DataTypes } = require('sequelize');
 const sequelize = require('../config/connection');
 
 class Comments extends Model { }
 
 Comments.init({
     description: {
-        type: Datatypes.TEXT,
+        type: DataTypes.TEXT,
         allowNull: false
     },
-    upload_date: {
-        type: Datatypes.DATE,
-        allowNull: false,
-        defaultValue: now
-    },
     user_id: {
-        type: Datatypes.INTEGER,
+        type: DataTypes.INTEGER,
         references: {
             model: 'user',
             key: 'id'
         }
     },
     dashboard_id: {
-        data: Datatypes.INTEGER,
+        type: DataTypes.INTEGER,
         references: {
             model: 'dashboard',
             key: 'id'
@@ -29,8 +24,10 @@ Comments.init({
     }
 }, {
     sequelize,
-    timestamps: false,
+    timestamps: true,
     freezeTableName: true,
     underscored: true,
     modelName: 'comments',
 })
+
+module.exports = Comments

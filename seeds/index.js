@@ -7,13 +7,13 @@ const sequelize = require('../config/connection');
 const seedAll = async () => {
     await sequelize.sync({ force: true });
     console.log('\n----- DATABASE SYNCED -----\n');
-    await seedDashboard();
+    await seedUser();
     console.log('\n----- DASHBOARD SEEDED -----\n');
   
-    await seedComments();
+    await seedDashboard();
     console.log('\n----- COMMENTS SEEDED -----\n');
   
-    await seedUser();
+    await seedComments();
     console.log('\n----- USER SEEDED -----\n');
   
     process.exit(0);

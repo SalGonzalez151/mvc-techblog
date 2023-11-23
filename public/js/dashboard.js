@@ -10,7 +10,7 @@ const postFormHandler = async (event) => {
             body: JSON.stringify({ title, description }),
             headers: { 'Content-Type': 'application/json' },
         });
-
+        
         if (response.ok) {
             document.location.reload();
         } else {

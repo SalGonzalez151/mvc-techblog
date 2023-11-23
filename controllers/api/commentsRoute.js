@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const { Comments } = require('../../models');
+const { Comments } = require('../../model');
 
 
 router.post('/', async (req, res) => {
@@ -35,3 +35,5 @@ router.delete('/:id', async (req, res) => {
         
     }
 })
+
+module.exports = router;

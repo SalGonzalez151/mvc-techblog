@@ -10,21 +10,27 @@ router.post('/', async (req, res) => {
       const dashboardData = await Dashboard.create({
         ...req.body,
         user_id: req.session.user_id,
+        include: User,
+        attributes: ['user']
       });
-  
+      res.render('dashboard', {
+        include: { model: Comments, 
+        attributes: ['description']}
+      })
       res.status(200).json(dashboardData);
     } catch (err) {
       res.status(400).json(err);
     }
   });
 
-  router.get('/dashboard/:id', async (req, res) => {
+  router.get('/:id', async (req, res) => {
     try {
         const dashboardData = await Dashboard.findByPk(req.params.id, {
-            include: { model: User }
+            include: { model: Comments,
+            attributes: ['description'] }
         })
         const dashboard = dashboardData.get({ plain: true })
-        res.render("singleProject", {
+        res.render("singleDashboard", {
             ...dashboard,
             logged_in: req.session.logged_in
         })
@@ -43,12 +49,12 @@ router.post('/', async (req, res) => {
         },
       });
   
-      if (!projectData) {
+      if (!dashboardData) {
         res.status(404).json({ message: 'No project found with this id!' });
         return;
       }
   
-      res.status(200).json(projectData);
+      res.status(200).json(dashboardData);
     } catch (err) {
       res.status(500).json(err);
     }

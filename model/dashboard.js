@@ -17,7 +17,14 @@ Dashboard.init ( {
             model: 'user',
             key: 'id'
         }
+    },
+    upload_date: {
+        type: DataTypes.DATE,
+        allowNull: false,
+        defaultValue: DataTypes.NOW
+        
     }
+    
 }, {
     sequelize,
     timestamps: true,

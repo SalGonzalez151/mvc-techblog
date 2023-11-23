@@ -33,10 +33,11 @@ router.post('/', async (req, res) => {
         })
         const dashboard = dashboardData.map(p => p.get({ plain: true }))
         res.render('dashboard', {
-            dashboard,
+            dashboard, 
             logged_in: req.session.logged_in
         })
-    } catch (error) {
+        
+    } catch (err) {
         console.log(err.message)
         res.status(500).json(err.message)
     }
@@ -44,13 +45,16 @@ router.post('/', async (req, res) => {
 
   router.get('/:id', async (req, res) => {
     try {
+        const commentsData = await Comments.findByPk(req.params.id)
         const dashboardData = await Dashboard.findByPk(req.params.id, {
-            include: { model: User,
-            attributes: ['user'] }
+            include: { model: Comments,
+            attributes: ['description'] }
+            
         })
+        const comments = commentsData.get({ plain: true})
         const dashboard = dashboardData.get({ plain: true })
         res.render("singleDashboard", {
-            ...dashboard, include: Comments,
+            ...dashboard, comments,
             
             logged_in: req.session.logged_in
         })

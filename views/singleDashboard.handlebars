@@ -1,8 +1,11 @@
 <div>
     <h2>{{title}}</h2>
     <p>{{description}}</p>
-    
+    <div>
+       {{!-- {{#each comments}}  --}}
     <p> {{comments.description}}</p>
+    {{!-- {{/each}} --}}
+    </div>
     <button class="del-btn" data-id="{{id}}">Delete</button>
 </div>
 

@@ -10,6 +10,11 @@ const commentsData = [ {
     description: "I love god of war!",
     user_id: 2,
     dashboard_id: 2
+}, {
+    id:3,
+    description: "wow pvp sucks",
+    user_id:1,
+    dashboard_id:1
 }]
 
 const seedComments = () => Comments.bulkCreate(commentsData)

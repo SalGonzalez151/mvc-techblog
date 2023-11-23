@@ -15,43 +15,43 @@ router.post('/', async (req, res) => {
       });
       const dashboard = dashboardData.get({ plain: true})
       res.render('dashboard', {
-        include: { model: Comments, 
-        attributes: ['description']}
+        // include: { model: Comments, 
+        // attributes: ['description']}
       })
-      res.status(200).json(dashboardData);
+      res.status(200).json(dashboard);
     } catch (err) {
       res.status(400).json(err);
     }
   });
 
-  router.get('/', async (req, res) => {
+  router.get('/',  async (req, res) => {
     try {
         const dashboardData = await Dashboard.findAll({
-            // include: User,
-            // attributes: ['user']
+            where: {
+                user_id: req.session.user_id
+            }
         })
-        const dashboard = dashboardData.map((post) => post.get({ plain: true })
-)
+        const dashboard = dashboardData.map(p => p.get({ plain: true }))
         res.render('dashboard', {
             dashboard,
-
-        } )
-} catch (err) {
-    console.error(err);
+            logged_in: req.session.logged_in
+        })
+    } catch (error) {
+        console.log(err.message)
         res.status(500).json(err.message)
-        
     }
 })
 
   router.get('/:id', async (req, res) => {
     try {
         const dashboardData = await Dashboard.findByPk(req.params.id, {
-            include: { model: Comments,
-            attributes: ['description'] }
+            include: { model: User,
+            attributes: ['user'] }
         })
         const dashboard = dashboardData.get({ plain: true })
         res.render("singleDashboard", {
-            ...dashboard,
+            ...dashboard, include: Comments,
+            
             logged_in: req.session.logged_in
         })
     } catch (err) {

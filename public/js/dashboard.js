@@ -1,20 +1,20 @@
-const projectFormHandler = async (event) => {
+const postFormHandler = async (event) => {
 
     event.preventDefault();
     const description = document.querySelector('#description').value.trim();
-    const needed_funding = document.querySelector('#funding').value.trim();
+    const title = document.querySelector('#name').value.trim();
 
-    if ( description && needed_funding) {
-        const response = await fetch('/api/dashboardRoute', {
+    if ( description && title) {
+        const response = await fetch('/api/dashboard', {
             method: 'POST',
-            body: JSON.stringify({ description, needed_funding }),
+            body: JSON.stringify({ title, description }),
             headers: { 'Content-Type': 'application/json' },
         });
 
         if (response.ok) {
             document.location.reload();
         } else {
-            alert('Failed to create new project');
+            alert('Failed to create new post');
         }
     }
 };
@@ -22,20 +22,21 @@ const projectFormHandler = async (event) => {
 const deleteHandler = async (e) => {
     if (e.target.matches(".del-btn") && e.target.hasAttribute('data-id')) {
         const id = e.target.dataset.id;
-        const response = await fetch(`/api/dashboardRoute/${id}`, {
+        const response = await fetch(`/api/dashboard/${id}`, {
             method: "DELETE",
         })
         if (response.ok) {
             document.location.reload()
+            console.log(id)
         } else {
-            alert("error deleting project")
+            alert("error deleting post")
         }
     }
 }
 
 document
-    .querySelector('.dashboard')
-    .addEventListener('submit', projectFormHandler);
+    .querySelector('.project-form')
+    .addEventListener('submit', postFormHandler);
 
 document
     .querySelector('.dashboard')

@@ -2,8 +2,8 @@
     <h2>My posts</h2>
     <div class="dashboard">
     {{#each dashboard}}
-        <h2>{{dashboard.title}}</h2>
-    <p>{{dashboard.description}}</p>
+        <h2>{{title}}</h2>
+    <p>{{description}}</p>
     <p>Created on {{created_at}}</p>
     <button class="del-btn" data-id="{{id}}">Delete</button>
     {{/each}}

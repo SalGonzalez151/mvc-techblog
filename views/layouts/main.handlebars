@@ -8,15 +8,30 @@
     <link rel="stylesheet" href="/css/style.css">
 </head>
 <body>
-    <header>
-        <h2>Tech Blog!</h2>
-    <nav>
+    <header class="display-flex justify-space-between align-center p-2">
+      <h1>
+        
+        <a href="/">Tech Blog</a>
+      </h1>
+      <nav>
+        <!-- Conditionally render login or logout links -->
+        <a href="/dashboard">dashboard</a> 
+        {{#if loggedIn}}
+        |
+        <button class="no-button" id="logout">logout</button>
+        {{else}}
         <a href="/login">login</a>
-        <a href="/dashboard">dashboard</a>
-        <a href="/">home</a>
-    </nav>
+        {{/if}}
+      </nav>
     </header>
-
+    </header>
+        <main class="container container-fluid mt-5"></main>
     {{{body}}}
+        </main>
+
+
+    {{#if loggedIn}}
+  <script src="/js/logout.js"></script>
+  {{/if}}
 </body>
 </html>

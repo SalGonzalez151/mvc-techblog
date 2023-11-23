@@ -1,11 +1,12 @@
 const { Dashboard, User, Comments } = require('../model')
 
 const router = require('express').Router();
+const withAuth = require('../utils/auth')
 
 
 
 
-router.post('/', async (req, res) => {
+router.post('/', withAuth, async (req, res) => {
     try {
       const dashboardData = await Dashboard.create({
         ...req.body,
@@ -15,8 +16,8 @@ router.post('/', async (req, res) => {
       });
       const dashboard = dashboardData.get({ plain: true})
       res.render('dashboard', {
-        // include: { model: Comments, 
-        // attributes: ['description']}
+        include: { model: Comments, 
+        attributes: ['description']}
       })
       res.status(200).json(dashboard);
     } catch (err) {
@@ -24,7 +25,7 @@ router.post('/', async (req, res) => {
     }
   });
 
-  router.get('/',  async (req, res) => {
+  router.get('/',  withAuth, async (req, res) => {
     try {
         const dashboardData = await Dashboard.findAll({
             where: {
@@ -34,7 +35,7 @@ router.post('/', async (req, res) => {
         const dashboard = dashboardData.map(p => p.get({ plain: true }))
         res.render('dashboard', {
             dashboard, 
-            logged_in: req.session.logged_in
+            loggedIn: req.session.loggedIn
         })
         
     } catch (err) {
@@ -45,18 +46,18 @@ router.post('/', async (req, res) => {
 
   router.get('/:id', async (req, res) => {
     try {
-        const commentsData = await Comments.findByPk(req.params.id)
+        const commentsData = await Comments.findAll({ where: { dashboard_id: req.session.id}})
         const dashboardData = await Dashboard.findByPk(req.params.id, {
             include: { model: Comments,
             attributes: ['description'] }
             
         })
-        const comments = commentsData.get({ plain: true})
+        const comments = commentsData.map(c => c.get({ plain: true}))
         const dashboard = dashboardData.get({ plain: true })
         res.render("singleDashboard", {
             ...dashboard, comments,
             
-            logged_in: req.session.logged_in
+            loggedIn: req.session.loggedIn
         })
     } catch (err) {
         console.log(err.message)

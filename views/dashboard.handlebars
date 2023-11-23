@@ -1,1 +1,28 @@
-<h2>hello world!</h2>
+<div>
+    <h2>My posts</h2>
+    <div class="dashboard">
+    {{#each dashboard}}
+        <h2>{{dashboard.title}}</h2>
+    <p>{{dashboard.description}}</p>
+    <p>Created on {{created_at}}</p>
+    <button class="del-btn" data-id="{{id}}">Delete</button>
+    {{/each}}
+</div>
+</div>
+<h2>Create a new Post</h2>
+
+<form class="form project-form">
+  <div class="form-group">
+    <label for="name">name:</label>
+    <input class="form-input" type="text" id="name" />
+  </div>
+  <div class="form-group">
+    <label for="description">description:</label>
+    <input class="form-input" type="text" id="description" />
+  </div>
+  <div class="form-group">
+    <button class="btn btn-primary" type="submit">create</button>
+  </div>
+</form>
+
+<script src="/js/dashboard.js"></script>

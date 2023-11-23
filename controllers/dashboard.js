@@ -13,6 +13,7 @@ router.post('/', async (req, res) => {
         include: User,
         attributes: ['user']
       });
+      const dashboard = dashboardData.get({ plain: true})
       res.render('dashboard', {
         include: { model: Comments, 
         attributes: ['description']}
@@ -22,6 +23,25 @@ router.post('/', async (req, res) => {
       res.status(400).json(err);
     }
   });
+
+  router.get('/', async (req, res) => {
+    try {
+        const dashboardData = await Dashboard.findAll({
+            // include: User,
+            // attributes: ['user']
+        })
+        const dashboard = dashboardData.map((post) => post.get({ plain: true })
+)
+        res.render('dashboard', {
+            dashboard,
+
+        } )
+} catch (err) {
+    console.error(err);
+        res.status(500).json(err.message)
+        
+    }
+})
 
   router.get('/:id', async (req, res) => {
     try {

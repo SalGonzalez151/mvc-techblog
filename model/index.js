@@ -1,5 +1,5 @@
 const Comments = require('./comments');
-const Dashboard = require('./dashboard')
+const Dashboard = require('./dashboardM')
 const User = require('./user');
 
 User.hasMany(Dashboard, {

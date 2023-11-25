@@ -17,7 +17,7 @@ router.put('/:id', async (req, res) => {
     try {
         const dashboardData = await Dashboard.update({
             ...req.body,
-            // date_updated: new Date()
+            date_updated: new Date()
         }, {
             where: {
                 id: req.params.id,

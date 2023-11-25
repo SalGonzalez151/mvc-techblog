@@ -4,27 +4,6 @@ const router = require('express').Router();
 const withAuth = require('../utils/auth')
 
 
-
-
-router.post('/', withAuth, async (req, res) => {
-    try {
-      const dashboardData = await Dashboard.create({
-        ...req.body,
-        user_id: req.session.user_id,
-        include: User,
-        attributes: ['user']
-      });
-      const dashboard = dashboardData.get({ plain: true})
-      res.render('dashboard', {
-        include: { model: Comments, 
-        attributes: ['description']}
-      })
-      res.status(200).json(dashboard);
-    } catch (err) {
-      res.status(400).json(err);
-    }
-  });
-
   router.get('/',  withAuth, async (req, res) => {
     try {
         const dashboardData = await Dashboard.findAll({
@@ -46,7 +25,7 @@ router.post('/', withAuth, async (req, res) => {
 
   router.get('/:id', async (req, res) => {
     try {
-        //get post with comments
+        
         const postData = await Dashboard.findByPk(req.params.id, {
           include: [ {
             model: Comments,
@@ -56,7 +35,7 @@ router.post('/', withAuth, async (req, res) => {
           }]
         })
        const post = postData.get({ plain: true })
-       res.render('singleDashboard', {
+       res.render('editPost', {
         ...post,
         loggedIn: true
        })
@@ -85,5 +64,9 @@ router.post('/', withAuth, async (req, res) => {
       res.status(500).json(err);
     }
   });
-  
+
+ 
   module.exports = router;
+
+
+  

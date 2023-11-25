@@ -27,4 +27,6 @@ const addComment = async (event) => {
     }
 };
 
+
+
 document.querySelector('#add-comment').addEventListener('click', addComment);

@@ -30,5 +30,36 @@ router.get('/login', async (req, res) => {
 })
 
 
+router.get('/post/:id', async (req, res) => {
+    try {
+        const userPostData = await Dashboard.findByPk(req.params.id, {
+            include: [
+                {
+                    model: Comments,
+                    include: User,
+                },
+                {
+                    model: User
+                }
+            ]
+        })
+
+        const userPost = userPostData.get({ plain: true })
+
+
+        // render users post and edit view
+        res.render('singleDashboard', {
+            ...userPost,
+
+            loggedIn: req.session.loggedIn
+        })
+
+    } catch (err) {
+      console.log(err);
+      res.status(500).json(err.message)
+    }
+  })
+  
+
 
 module.exports = router;

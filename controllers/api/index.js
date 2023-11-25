@@ -4,7 +4,7 @@ const dashboardRoute = require('./dashboardRoute');
 const commentsRoute = require('./commentsRoute');
 
 router.use('/user', userRoute);
-router.use('/dashboard', dashboardRoute);
+router.use('/post', dashboardRoute);
 router.use('/comments', commentsRoute);
 
 module.exports = router;

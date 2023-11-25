@@ -1,25 +1,28 @@
 <div>
+    <h3>Current Post:</h3>
+
     <h2>{{title}}</h2>
     <p>{{description}}</p>
     <div>
-
-        {{#if comments.length}}
         <div class="col-md-6 project-list">
-            <h3>Current Projects:</h3>
-
-            {{#each comments as | comments |}}
+            <h3>comments:</h3>
+            {{#each comments}}
             <div class="row mb-2">
                 <div class="col-md-8">
-                    <p>{{comments.description}}</p>
+                    <p>{{description}}</p>
                 </div>
             </div>
             {{/each}}
         </div>
-        {{/if}}
     </div>
 </div>
-<button class="comment-btn" data-id="{{id}}">Comment</button>
-<button class="del-btn" data-id="{{id}}">Delete</button>
+
+<button class="add-comment" id="add-comment">Comment</button>
+<div class="comment">
+    <label for="name">Comment:</label>
+    <input class="form-input" type="text" id="name" />
 </div>
 
-<script src="/js/dashboard.js"></script>
+
+
+<script scr="/js/comments.js"></script>

@@ -37,7 +37,7 @@ router.post('/', withAuth, async (req, res) => {
             dashboard, 
             loggedIn: req.session.loggedIn
         })
-        
+        // res.status(200).json(dashboard)
     } catch (err) {
         console.log(err.message)
         res.status(500).json(err.message)
@@ -46,19 +46,20 @@ router.post('/', withAuth, async (req, res) => {
 
   router.get('/:id', async (req, res) => {
     try {
-        const commentsData = await Comments.findAll({ where: { dashboard_id: req.session.id}})
-        const dashboardData = await Dashboard.findByPk(req.params.id, {
-            include: { model: Comments,
-            attributes: ['description'] }
-            
+        //get post with comments
+        const postData = await Dashboard.findByPk(req.params.id, {
+          include: [ {
+            model: Comments,
+            include: User,
+          },{
+            model: User
+          }]
         })
-        const comments = commentsData.map(c => c.get({ plain: true}))
-        const dashboard = dashboardData.get({ plain: true })
-        res.render("singleDashboard", {
-            ...dashboard, comments,
-            
-            loggedIn: req.session.loggedIn
-        })
+       const post = postData.get({ plain: true })
+       res.render('singleDashboard', {
+        ...post,
+        loggedIn: true
+       })
     } catch (err) {
         console.log(err.message)
         res.status(500).json(err.message)

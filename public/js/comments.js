@@ -3,16 +3,17 @@ const addComment = async (event) => {
 
     const url = window.location.href;
 
-    const match = url.match(/\/post\/(\d+)/);
+    const match = url.match(/\/dashboard\/(\d+)/);
     const targetId = match[1];
 
     if (match) {
-        const comment = document.querySelector('.form-input').value.trim();
+       
+        const comments = document.querySelector('.form-input').value.trim();
         //seed comment with comment value in dashboard
-        if (comment) {
+        if (comments) {
             const response = await fetch('/api/comments', {
                 method:'POST',
-                body:JSON.stringify({ comment, targetId}),
+                body:JSON.stringify({ comments, targetId}),
                 headers: { 'Content-type': 'application/json'},
             })
 

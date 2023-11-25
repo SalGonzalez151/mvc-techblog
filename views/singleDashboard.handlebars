@@ -4,11 +4,16 @@
     <h2>{{title}}</h2>
     <p>{{description}}</p>
     <div>
+        <div>
+            <button class="edit-comment" id="edit-comment">Edit</button>
+        </div>
         <div class="col-md-6 project-list">
+            
             <h3>comments:</h3>
             {{#each comments}}
             <div class="row mb-2">
                 <div class="col-md-8">
+                    <div>@{{user.user}}</div>
                     <p>{{description}}</p>
                 </div>
             </div>
@@ -25,4 +30,4 @@
 
 
 
-<script scr="/js/comments.js"></script>
+<script src="/js/comments.js"></script>

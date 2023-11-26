@@ -24,7 +24,7 @@ const postFormHandler = async (event) => {
 const deleteHandler = async (e) => {
     if (e.target.matches(".del-btn") && e.target.hasAttribute('data-id')) {
         const id = e.target.dataset.id;
-        const response = await fetch(`/api/dashboard/${id}`, {
+        const response = await fetch(`/api/post/${id}`, {
             method: "DELETE",
         })
         if (response.ok) {

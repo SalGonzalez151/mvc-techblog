@@ -24,7 +24,7 @@ const withAuth = require('../utils/auth')
 })
 
 // renders the post per id
-  router.get('/:id', async (req, res) => {
+  router.get('/:id', withAuth, async (req, res) => {
     try {
         
         const postData = await Dashboard.findByPk(req.params.id, {

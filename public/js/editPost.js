@@ -4,8 +4,8 @@ const editPost = async (event) => {
 
 
     const id = document.querySelector('.custom-card').getAttribute('data-id')
-    const description = document.querySelector('project-desc').value.trim()
-    const title = document.querySelector('project-name').value.trim()
+    const description = document.querySelector('#project-desc').value.trim()
+    const title = document.querySelector('#project-name').value.trim()
     if (title && description) {
         try {
             const response = await fetch(`/api/post/${id}`, {

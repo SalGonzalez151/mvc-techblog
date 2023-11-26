@@ -48,7 +48,7 @@ router.get('/post/:id', async (req, res) => {
 
 
         // render users post and edit view
-        res.render('singleDashboard', {
+        res.render('editPost', {
             ...userPost,
 
             loggedIn: req.session.loggedIn

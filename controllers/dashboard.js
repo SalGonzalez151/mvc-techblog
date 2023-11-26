@@ -35,7 +35,7 @@ const withAuth = require('../utils/auth')
           }]
         })
        const post = postData.get({ plain: true })
-       res.render('editPost', {
+       res.render('singleDashboard', {
         ...post,
         loggedIn: true
        })

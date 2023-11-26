@@ -2,6 +2,7 @@ const Comments = require('./comments');
 const Dashboard = require('./dashboard')
 const User = require('./user');
 
+// connects the tables with foreign id's
 User.hasMany(Dashboard, {
     foreignKey: 'user_id'
 })

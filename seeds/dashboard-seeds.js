@@ -1,5 +1,6 @@
 const { Dashboard } = require('../model');
 
+// seeds the dashboard table
 const dashboardData = [ {
     title: "Dragonflight is ok",
     description: "it has a lot of content for someone to do.",

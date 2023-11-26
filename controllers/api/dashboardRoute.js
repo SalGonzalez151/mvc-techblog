@@ -1,6 +1,7 @@
 const router = require('express').Router();
 const { Dashboard } = require('../../model');
 
+// posts the dashboard posts
 router.post('/', async (req, res) => {
     try {
         const dashboardData = await Dashboard.create({
@@ -13,6 +14,7 @@ router.post('/', async (req, res) => {
     }
 })
 
+// updates the post when clickin on it in the dashboard
 router.put('/:id', async (req, res) => {
     try {
         const dashboardData = await Dashboard.update({
@@ -33,6 +35,7 @@ router.put('/:id', async (req, res) => {
     }
 })
 
+// deletes the post when on dashboard.
 router.delete('/:id', async (req, res) => {
     try {
         const dashboardData = await Dashboard.destroy({

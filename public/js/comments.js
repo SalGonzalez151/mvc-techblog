@@ -1,3 +1,4 @@
+// adds comments to the post
 const addComment = async (event) => {
     event.preventDefault();
 

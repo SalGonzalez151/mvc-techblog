@@ -1,3 +1,4 @@
+// authorization for routes to require a login
 const withAuth = (req, res, next) => {
     if (!req.session.loggedIn) {
       res.redirect('/login');

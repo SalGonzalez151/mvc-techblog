@@ -2,6 +2,7 @@ const { Dashboard, User, Comments } = require('../model')
 
 const router = require('express').Router();
 
+// home routes gets all the post and displays them
 router.get('/', async (req, res) => {
     try {
         const dashboardData = await Dashboard.findAll({
@@ -21,7 +22,7 @@ router.get('/', async (req, res) => {
     }
 })
 
-
+// route for the login
 router.get('/login', async (req, res) => {
     if (req.session.logged_in) {
         res.redirect('/dashboard')
@@ -29,7 +30,7 @@ router.get('/login', async (req, res) => {
     res.render('login')
 })
 
-
+// get post per ID to edit the title and description
 router.get('/post/:id', async (req, res) => {
     try {
         const userPostData = await Dashboard.findByPk(req.params.id, {

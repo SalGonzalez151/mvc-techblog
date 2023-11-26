@@ -3,6 +3,7 @@ const sequelize = require('../config/connection');
 
 class Comments extends Model { }
 
+// defines the comments table
 Comments.init({
     description: {
         type: DataTypes.TEXT,

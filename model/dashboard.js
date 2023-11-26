@@ -3,6 +3,7 @@ const sequelize = require('../config/connection');
 
 class Dashboard extends Model {}
 
+// defines the dashboard table
 Dashboard.init ( {
     title: {
         type: DataTypes.STRING,

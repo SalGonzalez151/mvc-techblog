@@ -8,6 +8,7 @@ class User extends Model {
     }
 }
 
+// defines the user table
 User.init({
     user: {
         type: DataTypes.STRING,

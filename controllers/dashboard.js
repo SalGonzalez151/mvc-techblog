@@ -3,7 +3,7 @@ const { Dashboard, User, Comments } = require('../model')
 const router = require('express').Router();
 const withAuth = require('../utils/auth')
 
-
+// renders the dashboard posts 
   router.get('/',  withAuth, async (req, res) => {
     try {
         const dashboardData = await Dashboard.findAll({
@@ -16,13 +16,14 @@ const withAuth = require('../utils/auth')
             dashboard, 
             loggedIn: req.session.loggedIn
         })
-        // res.status(200).json(dashboard)
+        
     } catch (err) {
         console.log(err.message)
         res.status(500).json(err.message)
     }
 })
 
+// renders the post per id
   router.get('/:id', async (req, res) => {
     try {
         
@@ -40,11 +41,11 @@ const withAuth = require('../utils/auth')
         loggedIn: true
        })
     } catch (err) {
-        console.log(err.message)
         res.status(500).json(err.message)
     }
 })
 
+// deletes the post per id
   router.delete('/:id', async (req, res) => {
     try {
       const dashboardData = await Dashboard.destroy({

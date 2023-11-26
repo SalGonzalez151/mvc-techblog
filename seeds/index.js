@@ -4,6 +4,7 @@ const seedUser = require('./user-seeds')
 
 const sequelize = require('../config/connection');
 
+// seeds all the tables when seedAll is ran
 const seedAll = async () => {
     await sequelize.sync({ force: true });
     console.log('\n----- DATABASE SYNCED -----\n');

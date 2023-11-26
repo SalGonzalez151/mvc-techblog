@@ -1,4 +1,4 @@
-
+// code to edit the posts
 const editPost = async (event) => {
     event.preventDefault();
 

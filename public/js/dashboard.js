@@ -1,3 +1,4 @@
+// creates a new post
 const postFormHandler = async (event) => {
 
     event.preventDefault();
@@ -19,6 +20,7 @@ const postFormHandler = async (event) => {
     }
 };
 
+// deletes a post
 const deleteHandler = async (e) => {
     if (e.target.matches(".del-btn") && e.target.hasAttribute('data-id')) {
         const id = e.target.dataset.id;

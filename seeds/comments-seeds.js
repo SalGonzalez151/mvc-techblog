@@ -1,5 +1,6 @@
 const { Comments } = require('../model')
 
+// seeds the comments table
 const commentsData = [ {
     id: 1,
     description: "I love wow!",

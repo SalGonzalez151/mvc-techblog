@@ -11,7 +11,7 @@
             <div class="px-2 pt-2 my-1 d-flex justify-content-between">
                 <div>
                     <h5 class="lead">{{description}}</h5>
-                    <p class="blockquote-footer custom-at mt-1">@{{user.user_name}}</p>
+                    <p class="blockquote-footer custom-at mt-1">@{{user.user}}</p>
                 </div>
                 <form action="">
                     <div class="col-md-6">
@@ -20,7 +20,7 @@
                         <form class="form new-project-form">
                             <div class="form-group">
                                 <label for="project-name">Post Title: </label>
-                                <input value="{{title}}"  class="form-input" type="text" id="project-name" name="project-name" />
+                                <input value="{{title}}"  class="form-input row-md-12" type="text" id="project-name" name="project-name" />
                             </div>
                             <div class="form-group">
                                 <label for="project-desc">Description:</label>

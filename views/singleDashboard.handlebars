@@ -1,11 +1,11 @@
 <div>
-    <h3>Current Post:</h3>
+    <h3 class="current-post col-md-12">Current Post:</h3>
 
-    <h2 class="title">{{title}}</h2>
-    <p class="description">{{description}}</p>
+    <h2 class="title col-md-12">{{title}}</h2>
+    <p class="description col-md-12">{{description}}</p>
     <div>
         <div class="col-md-12 project-list">
-            
+
             <h3>comments:</h3>
             {{#each comments}}
             <div class="row mb-2">
@@ -20,10 +20,10 @@
 </div>
 
 
-<div class="comment">
+<div class="comment ">
     <form action="/form/submit" method="POST">
-      <textarea class="comment"></textarea>
-      <br>
+        <textarea class="comment col-md-2"></textarea>
+        <br>
     </form>
     <button class="add-comment" id="add-comment">Comment</button>
 </div>

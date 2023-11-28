@@ -10,6 +10,10 @@ type mpn i in the terminal to donwload dependencies
 
 Go to the website, create an account. once logged in you will be redirected to the dashboard where you can create post. You can also edit or delete, or comment on post.
 
+![website preview](public/Images/website-preview.png)
+
+
+website: https://dashboard.heroku.com/apps/serene-tor-19683
 ## credits
 
 N/A

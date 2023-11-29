@@ -7,6 +7,7 @@ router.get('/', async (req, res) => {
     try {
         const dashboardData = await Dashboard.findAll({
             include: User,
+            attributes: { exclude: ['password']}
         })
         const dashboard = dashboardData.map((post) => post.get({ plain: true })
 

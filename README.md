@@ -13,7 +13,7 @@ Go to the website, create an account. once logged in you will be redirected to t
 ![website preview](public/Images/website-preview.png)
 
 
-website: https://dashboard.heroku.com/apps/serene-tor-19683
+website: https://serene-tor-19683-970cd6d605fb.herokuapp.com/
 ## credits
 
 N/A
